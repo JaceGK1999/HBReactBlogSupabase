@@ -21,7 +21,13 @@ export default function Main() {
   return (
     <div>
       {blogs.map((blog) => (
-        <BlogCard key={blog.id} title={blog.title} subtitle={blog.subtitle} />
+        <BlogCard
+          key={blog.id}
+          title={blog.title}
+          subtitle={blog.subtitle}
+          image={blog.image}
+          text={blog.text}
+        />
       ))}
     </div>
   );
