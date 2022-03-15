@@ -1,5 +1,6 @@
 // import React from 'react';
 import { useState, useEffect } from 'react';
+import BlogCard from '../../components/BlogCard/BlogCard';
 import { fetchBlogs } from '../../services/Blog';
 // import BlogCard from '../components/BlogCard/BlogCard';
 
@@ -10,7 +11,6 @@ export default function Main() {
     const fetch = async () => {
       try {
         const resp = await fetchBlogs();
-        console.log(resp, 'response');
         setBlogs(resp);
       } catch (e) {
         alert(e.message);
@@ -18,6 +18,11 @@ export default function Main() {
     };
     fetch();
   }, []);
-  console.log(blogs, 'blogs');
-  return <div />;
+  return (
+    <div>
+      {blogs.map((blog) => (
+        <BlogCard key={blog.id} title={blog.title} subtitle={blog.subtitle} />
+      ))}
+    </div>
+  );
 }
